@@ -2,46 +2,125 @@
 'https://plantuml.com/object-diagram
 
 
+Driver --> Folder
+Driver --> File
+Folder *-- File : Contains
+class Driver {
++ main(String[] args)
+}
+
+
+class Folder{
+- name: String
+- subFolders: ArrayList<Folder>
+- files: ArrayList<File>
+
+
++Folder()
+
++  getName(): String
++ setName(): void
+
+
++ removeSubFolder(String subFolder): void
++addSubFolder(String subFolder): void
++getSubFolder(String subFolder): void
++ removeFile(File file): boolean
++ addFile(String fileName): void
+
++ String toString()
+
++void printFolderContents()
+}
 class File {
     - name: String
 
-    + File(name: String)
+    + File()
     + getName(): String
     + print(): void
+    + setName() : void
+    + toString: void
 }
 
-class Folder {
-    - name: String
-    - subFolders: List<Folder>
-    - files: List<File>
 
-    + Folder(name: String)
-    + getName(): String
-    + addSubFolder(folder: Folder): void
-    + addFile(file: File): void
-    + print(): void
-    + getSubfolders(): List<Folder>
-    + delete(folder: Folder): void
+object "php_demo1: Folder" as php_demo1{
++ name: "php_demo1"
++ subFolders: "[Source Files, Include Path, Remote Files]"
++ files : []
+
+}
+object "Source Files: Folder" as SourceFiles{
++ name: "Source Files"
++ subFolders: "[.phalcon, cache, public]"
++ files : [.htaccess, .htrouter, index.html]
 }
 
-class Driver {
-    + main(args: String[]): void
-    + printFullStructure(folder: Folder): void
+object "IncludePath: Folder" as IncludePath{
++ name: "Include Path"
++ subFolders: "[]"
++ files : []
 }
 
-File --> Folder : contains
-Folder --> File : contains
-Driver --> Folder : uses
-
-object "phpDemo1: Folder" as phpDemo1 {
-    Folder: php_demo1
+object "RemoteFiles: Folder" as RemoteFiles{
++ name: "Remote Files"
++ subFolders: "[]"
++ files : []
 }
 
-object "publicFolder: Folder" as publicFolder {
-    Folder: public
-  File: index.php
-  File: style.css
+
+
+object ".phalcon : Folder" as .phalcon{
++name: ".phalcon"
++subFolders : []
++files : []
 }
 
-phpDemo1 --> publicFolder
+object "cache : Folder" as cache{
++name: "cache"
++subFolders : []
++files : []
+}
+
+
+object "public : Folder" as public{
++name: "public"
++subFolders : []
++files : []
+}
+
+object ".htaccess : File" as .htaccess{
++name: ".htaccess"
+
+}
+
+object ".htrouter : File" as .htrouter{
++name: ".htrouter"
+
+}
+
+object "index : File" as index{
++name: "index.html "
+
+}
+
+
+php_demo1 --> SourceFiles
+
+php_demo1 --> IncludePath
+php_demo1 --> RemoteFiles
+
+
+SourceFiles --> .phalcon
+SourceFiles --> cache
+SourceFiles --> public
+SourceFiles --> .htaccess
+SourceFiles --> .htrouter
+SourceFiles --> index
+
+
+
+
+
+
+
 @enduml

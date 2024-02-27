@@ -1,7 +1,7 @@
 @startuml
 'https://plantuml.com/object-diagram
-Course --> Instructor : instructor
-Course --> Textbook : textbook
+Course *-- Instructor : instructor
+Course *-- Textbook : textbook
 
 
 class Course {
@@ -54,6 +54,6 @@ object "textbook: Textbook" as textbook {
     + publisher: "Prentice Hall"
 }
 
-course o-down-> instructor : has a
-course o-down-> textbook: has a
+course *-- instructor : has a
+course *-- textbook: has a
 @enduml

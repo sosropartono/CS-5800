@@ -6,8 +6,8 @@ class Instructor
 class Textbook
 
 
-Course --o Textbook
-Course --o Instructor
+Course *-- Textbook
+Course *-- Instructor
 
 
 class Textbook {
