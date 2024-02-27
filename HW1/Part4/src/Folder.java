@@ -6,6 +6,7 @@ class Folder {
     private final List<Folder> subFolders;
     private final List<File> files;
 
+
     public Folder(String name) {
         this.name = name;
         this.subFolders = new ArrayList<>();
@@ -34,8 +35,15 @@ class Folder {
         }
     }
 
+    public List<Folder> getSubfolders() {
+        return subFolders;
+    }
+
+
     public void delete(Folder folder) {
         this.subFolders.remove(folder);
         folder.files.clear();
     }
+
+
 }

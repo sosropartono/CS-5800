@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/object-diagram
+class Ship {
+    - name: String
+    - year: String
+
+    + Ship(name: String, year: String)
+    + getName(): String
+    + setName(name: String): void
+    + getYear(): String
+    + setYear(year: String): void
+    + toString(): String
+}
+
+class CruiseShip {
+    - MAX_CAPACITY: int
+
+    + CruiseShip(name: String, year: String, capacity: int)
+    + getMAX_CAPACITY(): int
+    + setMAX_CAPACITY(newCapacity: int): void
+    + toString(): String
+}
+
+class CargoShip {
+    - cargoCapacity: int
+
+    + CargoShip(name: String, year: String, cargoCapacity: int)
+    + getTonnage(): int
+    + setTonnage(tonnage: int): void
+    + toString(): String
+}
+
+Ship <|-- CruiseShip
+Ship <|-- CargoShip
+
+object "ship: Ship" as ship {
+    + name: "Queen Mary"
+    + year: "1936"
+}
+
+object "cruiseShip: CruiseShip" as cruiseShip {
+    + name: "Caribbean Princess"
+    + year: "2004"
+    + MAX_CAPACITY: 3600
+}
+
+object "cargoShip: CargoShip" as cargoShip {
+    + name: "Emma Maersk"
+    + year: "2006"
+    + cargoCapacity: 156907
+}
+@enduml

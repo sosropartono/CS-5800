@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Folder {
+    - name: String
+    - subFolders: List<Folder>
+    - files: List<File>
+
+    + Folder(name: String)
+    + getName(): String
+    + addSubFolder(folder: Folder): void
+    + addFile(file: File): void
+    + print(): void
+    + delete(folder: Folder): void
+}
+
+class File {
+    - name: String
+
+    + File(name: String)
+    + getName(): String
+    + print(): void
+}
+
+Folder "1" o-- "n" Folder
+Folder "1" o-- "n" File
+@enduml

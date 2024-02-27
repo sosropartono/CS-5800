@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+
+class File {
+    - name: String
+
+    + File(name: String)
+    + getName(): String
+    + print(): void
+}
+
+class Folder {
+    - name: String
+    - subFolders: List<Folder>
+    - files: List<File>
+
+    + Folder(name: String)
+    + getName(): String
+    + addSubFolder(folder: Folder): void
+    + addFile(file: File): void
+    + print(): void
+    + getSubfolders(): List<Folder>
+    + delete(folder: Folder): void
+}
+
+class Driver {
+    + main(args: String[]): void
+    + printFullStructure(folder: Folder): void
+}
+
+File --> Folder : contains
+Folder --> File : contains
+Driver --> Folder : uses
+
+object "phpDemo1: Folder" as phpDemo1 {
+    Folder: php_demo1
+}
+
+object "publicFolder: Folder" as publicFolder {
+    Folder: public
+  File: index.php
+  File: style.css
+}
+
+phpDemo1 --> publicFolder
+@enduml

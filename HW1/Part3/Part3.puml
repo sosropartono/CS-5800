@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Course
+class Instructor
+class Textbook
+
+
+Course --o Textbook
+Course --o Instructor
+
+
+class Textbook {
+    - String title;
+     -String author;
+     -String publisher;
+     + String toString()
+}
+class Instructor{
+
+    - String first;
+    - String last;
+    -String officeNumber;
+    + String getOfficeNumber()
+    + void setOfficeNumber(String officeNumber)
+    + void setLast(String last)
+    + String getLast()
+    + void setFirst(String first)
+    + String getFirst()
+    + void setMAX_CAPACITY(int newCapacity)
+    + String toString()
+
+}
+
+class Course{
+    -String name;
+    -Instructor instructor;
+    -Textbook textbook;
+    + toString()
+
+
+
+}
+
+
+@enduml

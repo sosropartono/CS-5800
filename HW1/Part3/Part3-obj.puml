@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/object-diagram
+Course --> Instructor : instructor
+Course --> Textbook : textbook
+
+
+class Course {
+    - name: String
+    - instructor: Instructor
+    - textbook: Textbook
+
+    + Course(name: String, instructor: Instructor, textbook: Textbook)
+    + toString(): String
+}
+
+class Instructor {
+    - first: String
+    - last: String
+    - officeNumber: String
+
+    + Instructor(first: String, last: String, officeNumber: String)
+    + getFirst(): String
+    + setFirst(first: String): void
+    + getLast(): String
+    + setLast(last: String): void
+    + getOfficeNumber(): String
+    + setOfficeNumber(officeNumber: String): void
+    + toString(): String
+}
+
+class Textbook {
+    - title: String
+    - author: String
+    - publisher: String
+
+    + Textbook(title: String, author: String, publisher: String)
+    + toString(): String
+}
+object "course: Course" as course {
+    + name: "CS 5800 Advanced Software Engineering"
+    + instructor: instructor
+    + textbook: textbook
+}
+
+object "instructor: Instructor" as instructor {
+    + first: "Nima"
+    + last: "Davarpanah"
+    + officeNumber: "3-2636"
+}
+
+object "textbook: Textbook" as textbook {
+    + title: "CleanCode: A Handbook of Agile Software Craftsmanship"
+    + author: "Robert C. Martin"
+    + publisher: "Prentice Hall"
+}
+
+course o-down-> instructor : has a
+course o-down-> textbook: has a
+@enduml

@@ -1,0 +1,49 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Object
+class Employee
+class BaseEmployee
+class CommissionEmployee
+class HourlyEmployee
+class SalariedEmployee
+
+Object <|-- Employee
+
+Employee <|-- BaseEmployee
+Employee <|-- CommissionEmployee
+Employee <|-- HourlyEmployee
+Employee <|-- SalariedEmployee
+
+
+class Employee{
+    - String first;
+    - String last;
+    - String SSN;
+    + String toString()
+    }
+
+
+class BaseEmployee {
+    -float baseSalary;
+    + String toString()
+}
+
+class CommissionEmployee {
+    -float comissionRate;
+    -grossSales;
+   +  String toString()
+}
+class HourlyEmployee {
+    -int wage;
+    -int hours;
+   +  String toString()
+}
+
+class SalariedEmployee {
+    -int weeklySalary;
+    + String toString()
+}
+
+
+@enduml
